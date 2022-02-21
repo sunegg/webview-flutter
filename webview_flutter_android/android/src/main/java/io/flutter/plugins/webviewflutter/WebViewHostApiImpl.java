@@ -11,6 +11,7 @@ import android.view.View;
 import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebSettings;
 import android.webkit.WebViewClient;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -478,6 +479,26 @@ public class WebViewHostApiImpl implements WebViewHostApi {
   public void setWebViewClient(Long instanceId, Long webViewClientInstanceId) {
     final WebView webView = (WebView) instanceManager.getInstance(instanceId);
     webView.setWebViewClient((WebViewClient) instanceManager.getInstance(webViewClientInstanceId));
+        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+    webView.getSettings().setSupportMultipleWindows(true);
+    webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+    webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
+    webView.getSettings().setJavaScriptEnabled(true);
+    webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+    webView.getSettings().setGeolocationEnabled(true);
+    webView.getSettings().setGeolocationDatabasePath(context.getFilesDir().getPath());
+    webView.getSettings().setSupportZoom(true); // 支持页面放大功能
+    webView.getSettings().setSaveFormData(false);// 不保存表单数据
+    webView.getSettings().setSavePassword(false);// 不保存密码
+    webView.getSettings().setAllowContentAccess(true);
+    webView.getSettings().setUseWideViewPort(true); // 设置webview自适应屏幕大小
+    webView.getSettings().setAllowFileAccess(true);
+    webView.getSettings().setAppCacheEnabled(true);
+    webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
+    webView.getSettings().setBlockNetworkImage(false);
+    webView.getSettings().setDomStorageEnabled(true);
+    webView.getSettings().setLoadWithOverviewMode(true);
+    webView.getSettings().setDefaultTextEncodingName("utf-8");
   }
 
   @Override
@@ -506,6 +527,26 @@ public class WebViewHostApiImpl implements WebViewHostApi {
   public void setWebChromeClient(Long instanceId, Long clientInstanceId) {
     final WebView webView = (WebView) instanceManager.getInstance(instanceId);
     webView.setWebChromeClient((WebChromeClient) instanceManager.getInstance(clientInstanceId));
+    webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+    webView.getSettings().setSupportMultipleWindows(true);
+    webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+    webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
+    webView.getSettings().setJavaScriptEnabled(true);
+    webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+    webView.getSettings().setGeolocationEnabled(true);
+    webView.getSettings().setGeolocationDatabasePath(context.getFilesDir().getPath());
+    webView.getSettings().setSupportZoom(true); // 支持页面放大功能
+    webView.getSettings().setSaveFormData(false);// 不保存表单数据
+    webView.getSettings().setSavePassword(false);// 不保存密码
+    webView.getSettings().setAllowContentAccess(true);
+    webView.getSettings().setUseWideViewPort(true); // 设置webview自适应屏幕大小
+    webView.getSettings().setAllowFileAccess(true);
+    webView.getSettings().setAppCacheEnabled(true);
+    webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
+    webView.getSettings().setBlockNetworkImage(false);
+    webView.getSettings().setDomStorageEnabled(true);
+    webView.getSettings().setLoadWithOverviewMode(true);
+    webView.getSettings().setDefaultTextEncodingName("utf-8");
   }
 
   @Override
