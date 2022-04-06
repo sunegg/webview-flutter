@@ -7,6 +7,8 @@ package io.flutter.plugins.webviewflutter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.hardware.display.DisplayManager;
+import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.webkit.DownloadListener;
 import android.webkit.WebChromeClient;
@@ -477,11 +479,14 @@ public class WebViewHostApiImpl implements WebViewHostApi {
 
   @Override
   public void setWebViewClient(Long instanceId, Long webViewClientInstanceId) {
+    AdBlocker.init(context);
     final WebView webView = (WebView) instanceManager.getInstance(instanceId);
     webView.setWebViewClient((WebViewClient) instanceManager.getInstance(webViewClientInstanceId));
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
     webView.getSettings().setSupportMultipleWindows(true);
-    webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+    }
     webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
     webView.getSettings().setJavaScriptEnabled(true);
     webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
@@ -529,7 +534,9 @@ public class WebViewHostApiImpl implements WebViewHostApi {
     webView.setWebChromeClient((WebChromeClient) instanceManager.getInstance(clientInstanceId));
     webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
     webView.getSettings().setSupportMultipleWindows(true);
-    webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+    }
     webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
     webView.getSettings().setJavaScriptEnabled(true);
     webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);

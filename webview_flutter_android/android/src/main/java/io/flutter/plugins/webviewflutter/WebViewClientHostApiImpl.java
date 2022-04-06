@@ -11,6 +11,7 @@ import android.os.Build;
 import android.view.KeyEvent;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import androidx.annotation.NonNull;
@@ -18,6 +19,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.webkit.WebResourceErrorCompat;
 import androidx.webkit.WebViewClientCompat;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Host api implementation for {@link WebViewClient}.
@@ -39,6 +43,21 @@ public class WebViewClientHostApiImpl implements GeneratedAndroidWebView.WebView
   public static class WebViewClientImpl extends WebViewClient implements ReleasableWebViewClient {
     @Nullable private WebViewClientFlutterApiImpl flutterApi;
     private final boolean shouldOverrideUrlLoading;
+
+    private Map<String, Boolean> loadedUrls = new HashMap<>();
+    @Nullable
+    @Override
+    public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
+      boolean ad;
+      if (!loadedUrls.containsKey(url)) {
+        ad = AdBlocker.isAd(url);
+        loadedUrls.put(url, ad);
+      } else {
+        ad = loadedUrls.get(url);
+      }
+      return ad ? AdBlocker.createEmptyResource() :
+              super.shouldInterceptRequest(view, url);
+    }
 
     /**
      * Creates a {@link WebViewClient} that passes arguments of callbacks methods to Dart.
@@ -95,7 +114,9 @@ public class WebViewClientHostApiImpl implements GeneratedAndroidWebView.WebView
       if (flutterApi != null) {
         flutterApi.urlLoading(this, view, url, reply -> {});
       }
-      return shouldOverrideUrlLoading;
+      view.loadUrl(url);
+      return true;
+      //return shouldOverrideUrlLoading;
     }
 
     @Override
