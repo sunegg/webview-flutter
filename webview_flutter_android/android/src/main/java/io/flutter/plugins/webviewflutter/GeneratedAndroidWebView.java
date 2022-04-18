@@ -1142,8 +1142,6 @@ public class GeneratedAndroidWebView {
 
     void setMediaPlaybackRequiresUserGesture(Long instanceId, Boolean require);
 
-    void setSupportZoom(Long instanceId, Boolean support);
-
     void setSafeBrowsingEnabled(Long instanceId, Boolean support);
 
     void setLoadWithOverviewMode(Long instanceId, Boolean overview);
