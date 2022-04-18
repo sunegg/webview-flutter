@@ -269,7 +269,6 @@ class WebViewAndroidPlatformController extends WebViewPlatformController {
       if (setting.debuggingEnabled != null)
         _setDebuggingEnabled(setting.debuggingEnabled!),
       if (setting.zoomEnabled != null) _setZoomEnabled(setting.zoomEnabled!),
-      if (setting.adFilter != null) _setAdFilter(setting.adFilter!),
     ]);
   }
 
@@ -430,10 +429,6 @@ class WebViewAndroidPlatformController extends WebViewPlatformController {
 
   Future<void> _setZoomEnabled(bool zoomEnabled) {
     return webView.settings.setSupportZoom(zoomEnabled);
-  }
-
-  Future<void> _setAdFilter(bool adFilter) {
-    return webView.settings.setAdFilter(adFilter);
   }
 }
 

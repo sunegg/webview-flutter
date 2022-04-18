@@ -96,12 +96,6 @@ public class WebSettingsHostApiImpl implements WebSettingsHostApi {
   }
 
   @Override
-  public void setSafeBrowsingEnabled(Long instanceId, Boolean support) {
-    final WebSettings webSettings = (WebSettings) instanceManager.getInstance(instanceId);
-    webSettings.setSafeBrowsingEnabled(support);
-  }
-
-  @Override
   public void setLoadWithOverviewMode(Long instanceId, Boolean overview) {
     final WebSettings webSettings = (WebSettings) instanceManager.getInstance(instanceId);
     webSettings.setLoadWithOverviewMode(overview);

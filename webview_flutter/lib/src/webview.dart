@@ -94,7 +94,6 @@ class WebView extends StatefulWidget {
     this.debuggingEnabled = false,
     this.gestureNavigationEnabled = false,
     this.userAgent,
-    this.adFilter = true,
     this.zoomEnabled = true,
     this.initialMediaPlaybackPolicy =
         AutoMediaPlaybackPolicy.require_user_action_for_all_media_types,
@@ -278,8 +277,6 @@ class WebView extends StatefulWidget {
   /// By default `userAgent` is null.
   final String? userAgent;
 
-  final bool adFilter;
-
   /// A Boolean value indicating whether the WebView should support zooming
   /// using its on-screen zoom controls and gestures.
   ///
@@ -388,7 +385,6 @@ WebSettings _webSettingsFromWidget(WebView widget) {
     gestureNavigationEnabled: widget.gestureNavigationEnabled,
     allowsInlineMediaPlayback: widget.allowsInlineMediaPlayback,
     userAgent: WebSetting<String?>.of(widget.userAgent),
-    adFilter: widget.adFilter,
     zoomEnabled: widget.zoomEnabled,
   );
 }
@@ -406,7 +402,6 @@ WebSettings _clearUnchangedWebSettings(
   assert(newValue.debuggingEnabled != null);
   assert(newValue.userAgent != null);
   assert(newValue.zoomEnabled != null);
-  assert(newValue.adFilter != null);
 
   JavascriptMode? javascriptMode;
   bool? hasNavigationDelegate;
@@ -414,7 +409,6 @@ WebSettings _clearUnchangedWebSettings(
   bool? debuggingEnabled;
   WebSetting<String?> userAgent = const WebSetting<String?>.absent();
   bool? zoomEnabled;
-  bool? adFilter;
   if (currentValue.javascriptMode != newValue.javascriptMode) {
     javascriptMode = newValue.javascriptMode;
   }
@@ -433,9 +427,6 @@ WebSettings _clearUnchangedWebSettings(
   if (currentValue.zoomEnabled != newValue.zoomEnabled) {
     zoomEnabled = newValue.zoomEnabled;
   }
-  if (currentValue.adFilter != newValue.adFilter) {
-    adFilter = newValue.adFilter;
-  }
 
   return WebSettings(
     javascriptMode: javascriptMode,
@@ -444,7 +435,6 @@ WebSettings _clearUnchangedWebSettings(
     debuggingEnabled: debuggingEnabled,
     userAgent: userAgent,
     zoomEnabled: zoomEnabled,
-    adFilter: adFilter,
   );
 }
 

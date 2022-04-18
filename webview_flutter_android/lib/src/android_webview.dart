@@ -499,10 +499,6 @@ class WebSettings {
     return api.setSupportZoomFromInstance(this, support);
   }
 
-  Future<void> setAdFilter(bool support) {
-    return api.setAdFilterFromInstance(this, support);
-  }
-
   /// Sets whether the WebView loads pages in overview mode, that is, zooms out the content to fit on screen by width.
   ///
   /// This setting is taken into account when the content width is greater than

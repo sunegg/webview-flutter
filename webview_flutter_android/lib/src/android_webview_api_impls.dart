@@ -397,13 +397,6 @@ class WebSettingsHostApiImpl extends WebSettingsHostApi {
     return setSupportZoom(instanceManager.getInstanceId(instance)!, support);
   }
 
-  Future<void> setAdFilterFromInstance(
-    WebSettings instance,
-    bool support,
-  ) {
-    return setAdFilter(instanceManager.getInstanceId(instance)!, support);
-  }
-
   /// Helper method to convert instances ids to objects.
   Future<void> setLoadWithOverviewModeFromInstance(
     WebSettings instance,

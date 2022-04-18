@@ -48,9 +48,6 @@ public class WebViewClientHostApiImpl implements GeneratedAndroidWebView.WebView
     @Nullable
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-      if(!view.getSettings().getSafeBrowsingEnabled()){
-        return super.shouldInterceptRequest(view, url);
-      }
       boolean ad;
       if (!loadedUrls.containsKey(url)) {
         ad = AdBlocker.isAd(url);
