@@ -487,7 +487,7 @@ public class WebViewHostApiImpl implements WebViewHostApi {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
     }
-    webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
+    //webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
     webView.getSettings().setJavaScriptEnabled(true);
     webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
     webView.getSettings().setGeolocationEnabled(true);
@@ -539,7 +539,7 @@ public class WebViewHostApiImpl implements WebViewHostApi {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
     }
-    webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
+    //webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
     webView.getSettings().setJavaScriptEnabled(true);
     webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
     webView.getSettings().setGeolocationEnabled(true);
