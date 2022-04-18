@@ -48,7 +48,7 @@ public class WebViewClientHostApiImpl implements GeneratedAndroidWebView.WebView
     @Nullable
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-      if(!AdBlocker.adFilter){
+      if(!view.getSettings().getMediaPlaybackRequiresUserGesture()){
         return super.shouldInterceptRequest(view, url);
       }
       boolean ad;

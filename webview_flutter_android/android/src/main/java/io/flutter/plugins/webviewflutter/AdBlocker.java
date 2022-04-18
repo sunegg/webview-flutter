@@ -24,8 +24,6 @@ public class AdBlocker {
     private static final String AD_HOSTS_FILE = "host.txt";
     private static final Set<String> AD_HOSTS = new HashSet<>();
 
-    public static boolean adFilter=true;
-    
     public static void init(final Context context) {
         new AsyncTask<Void, Void, Void>() {
             @Override
