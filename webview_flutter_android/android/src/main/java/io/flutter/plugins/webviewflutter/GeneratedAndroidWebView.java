@@ -1142,7 +1142,7 @@ public class GeneratedAndroidWebView {
 
     void setMediaPlaybackRequiresUserGesture(Long instanceId, Boolean require);
 
-    void setSafeBrowsingEnabled(Long instanceId, Boolean support);
+    void setSupportZoom(Long instanceId, Boolean support);
 
     void setLoadWithOverviewMode(Long instanceId, Boolean overview);
 
@@ -1430,37 +1430,6 @@ public class GeneratedAndroidWebView {
                 }
                 reply.reply(wrapped);
               });
-        } else {
-          channel.setMessageHandler(null);
-        }
-      }
-      {
-        BasicMessageChannel<Object> channel =
-                new BasicMessageChannel<>(
-                        binaryMessenger,
-                        "dev.flutter.pigeon.WebSettingsHostApi.setSafeBrowsingEnabled",
-                        getCodec());
-        if (api != null) {
-          channel.setMessageHandler(
-                  (message, reply) -> {
-                    Map<String, Object> wrapped = new HashMap<>();
-                    try {
-                      ArrayList<Object> args = (ArrayList<Object>) message;
-                      Number instanceIdArg = (Number) args.get(0);
-                      if (instanceIdArg == null) {
-                        throw new NullPointerException("instanceIdArg unexpectedly null.");
-                      }
-                      Boolean supportArg = (Boolean) args.get(1);
-                      if (supportArg == null) {
-                        throw new NullPointerException("supportArg unexpectedly null.");
-                      }
-                      api.setSafeBrowsingEnabled(instanceIdArg.longValue(), supportArg);
-                      wrapped.put("result", null);
-                    } catch (Error | RuntimeException exception) {
-                      wrapped.put("error", wrapError(exception));
-                    }
-                    reply.reply(wrapped);
-                  });
         } else {
           channel.setMessageHandler(null);
         }
