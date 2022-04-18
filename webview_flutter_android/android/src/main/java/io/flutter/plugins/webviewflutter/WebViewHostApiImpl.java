@@ -494,6 +494,7 @@ public class WebViewHostApiImpl implements WebViewHostApi {
     webView.getSettings().setGeolocationDatabasePath(context.getFilesDir().getPath());
     webView.getSettings().setSupportZoom(true); // 支持页面放大功能
     webView.getSettings().setSaveFormData(false);// 不保存表单数据
+    webView.getSettings().setSafeBrowsingEnabled(false);
     webView.getSettings().setSavePassword(false);// 不保存密码
     webView.getSettings().setAllowContentAccess(true);
     webView.getSettings().setUseWideViewPort(true); // 设置webview自适应屏幕大小
@@ -504,6 +505,7 @@ public class WebViewHostApiImpl implements WebViewHostApi {
     webView.getSettings().setDomStorageEnabled(true);
     webView.getSettings().setLoadWithOverviewMode(true);
     webView.getSettings().setDefaultTextEncodingName("utf-8");
+    AdBlocker.adFilter=webView.getSettings().getMediaPlaybackRequiresUserGesture();
   }
 
   @Override
@@ -544,6 +546,7 @@ public class WebViewHostApiImpl implements WebViewHostApi {
     webView.getSettings().setGeolocationDatabasePath(context.getFilesDir().getPath());
     webView.getSettings().setSupportZoom(true); // 支持页面放大功能
     webView.getSettings().setSaveFormData(false);// 不保存表单数据
+    webView.getSettings().setSafeBrowsingEnabled(false);
     webView.getSettings().setSavePassword(false);// 不保存密码
     webView.getSettings().setAllowContentAccess(true);
     webView.getSettings().setUseWideViewPort(true); // 设置webview自适应屏幕大小
